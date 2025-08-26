@@ -47,7 +47,7 @@ sudo docker --version
 ### Passo 1: Clonar o repositório
 
 ```bash
-git clone https://github.com/lopesmauro/api_rest.git
+git clone https://github.com/lopesmauro/first_api_rest.git
 cd api_rest
 npm i
 ```
