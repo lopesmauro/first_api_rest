@@ -4,6 +4,8 @@ import helmet from 'helmet'
 import userRoutes from './routes/userRoutes.ts'
 import tokenRoutes from './routes/tokenRoutes.ts'
 import limiter from './middlewares/rateLimiter.ts'
+import swaggerUi from 'swagger-ui-express'
+import { swaggerSpec } from './config/swagger.ts'
 
 const app = express()
 
@@ -21,5 +23,7 @@ app.get('/', (req, res) => {
 
 app.use("/user", userRoutes)
 app.use("/tokens", tokenRoutes)
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 export default app
