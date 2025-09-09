@@ -1,68 +1,61 @@
-Essas rotas representam diferentes funcionalidades e endpoints de uma aplicação que parece estar relacionada a um sistema de pedidos de comida, com funções de registro, pedidos, avaliações e gestão de restaurantes. Cada rota está associada a uma função que executa uma ação específica. Vou detalhar o que cada uma dessas rotas provavelmente faz:
+- Rotas de Registro e Autenticação:
 
-### **Rota de Registro e Autenticação:**
+✅ registerUser: Rota para registrar um novo usuário na plataforma. Inclui dados básicos como nome, e-mail, senha e perfil de acesso.
 
-1. **`registerRestaurant`**: Rota para registrar um novo restaurante na plataforma. Isso pode envolver a criação de um perfil para o restaurante, incluindo informações como nome, localização, cardápio, etc.
-   
-2. **`registerCustomer`**: Rota para registrar um novo cliente. Ela provavelmente cria um perfil de usuário para o cliente, com dados como nome, e-mail, telefone e preferências.
+sendVerificationEmail: Envia um link de verificação para o e-mail do usuário recém-registrado, garantindo a validação da conta.
 
-3. **`sendAuthenticationLink`**: Rota que envia um link de autenticação para um usuário (provavelmente um cliente ou administrador). Esse link pode ser usado para validar o e-mail ou autenticar o usuário de forma segura.
+verifyAccount: Valida a conta do usuário a partir do link/token enviado por e-mail.
 
-4. **`authenticateFromLink`**: Rota que processa a autenticação de um usuário a partir do link enviado na rota anterior. Esse link pode ter um token que confirma a identidade do usuário.
+✅ login: Realiza a autenticação do usuário, retornando um token JWT para acesso aos recursos protegidos.
 
-5. **`authentication`**: Rota responsável por gerenciar o processo de autenticação do usuário. Pode ser uma rota de login, onde o usuário fornece credenciais e, se válidas, recebe um token de autenticação.
+refreshToken: Gera um novo token de acesso a partir de um refresh token válido.
 
-6. **`signOut`**: Rota para fazer o logout do sistema, removendo qualquer token de autenticação do usuário, invalidando sua sessão.
+logout: Invalida o token de autenticação do usuário, encerrando sua sessão.
 
-### **Rota de Pedidos e Avaliações:**
+- Rotas de Usuários (CRUD principal):
 
-7. **`createOrder`**: Rota para criar um novo pedido. Um cliente provavelmente a utiliza para fazer um pedido de um restaurante, incluindo detalhes sobre os produtos e a quantidade.
+✅ getUsers: Retorna a lista de usuários cadastrados, com suporte a paginação, filtros e busca.
 
-8. **`approveOrder`**: Rota para aprovar um pedido. Geralmente, isso seria feito pelo restaurante ou por um administrador para confirmar que o pedido está pronto para ser processado.
+getUserById: Retorna os detalhes de um usuário específico pelo ID.
 
-9. **`cancelOrder`**: Rota para cancelar um pedido. Pode ser utilizada tanto pelo cliente (antes de um pedido ser aprovado) quanto pelo restaurante.
+✅ updateUser: Atualiza dados de um usuário, como nome, e-mail, senha ou permissões.
 
-10. **`getOrders`**: Rota para obter uma lista de pedidos. Ela pode retornar todos os pedidos feitos, com filtros possíveis como "pendentes", "em andamento", ou "finalizados".
+✅ deleteUser: Remove permanentemente um usuário do sistema.
 
-11. **`getOrderDetails`**: Rota para obter detalhes específicos de um pedido, como os itens pedidos, status, valores, etc.
+- Rotas de Perfil e Preferências:
 
-12. **`dispatchOrder`**: Rota para despachar um pedido para entrega, indicando que ele foi preparado e está pronto para ser enviado.
+getProfile: Retorna os dados do perfil do usuário autenticado.
 
-13. **`deliverOrder`**: Rota para marcar o pedido como entregue. Isso pode ser feito pelo entregador ou restaurante.
+updateProfile: Atualiza informações do perfil do próprio usuário, como avatar, preferências ou dados pessoais.
 
-### **Rota de Avaliações e Feedback:**
+changePassword: Permite ao usuário alterar sua senha de forma segura.
 
-14. **`createEvaluation`**: Rota para criar uma avaliação de um restaurante ou produto. O cliente pode deixar uma nota, comentários e feedback sobre sua experiência.
+uploadAvatar: Faz upload e atualização da imagem de perfil do usuário.
 
-15. **`getEvaluations`**: Rota para obter as avaliações feitas por clientes, possivelmente filtradas por restaurante ou produto.
+- Rotas de Permissões e Papéis:
 
-### **Rota de Gestão do Restaurante e Perfil:**
+assignRole: Atribui um papel (role) a um usuário, como admin, manager ou user.
 
-16. **`updateMenu`**: Rota para atualizar o cardápio de um restaurante. Pode incluir adicionar, remover ou atualizar itens do cardápio.
+getRoles: Retorna a lista de papéis disponíveis no sistema.
 
-17. **`updateProfile`**: Rota para atualizar o perfil de um usuário ou restaurante. Isso pode incluir mudar informações como nome, endereço, telefone, etc.
+updateRole: Atualiza as permissões associadas a um papel específico.
 
-18. **`getProfile`**: Rota para obter os dados do perfil de um usuário ou restaurante, mostrando informações como nome, contato, preferências, etc.
+revokeRole: Remove um papel previamente atribuído a um usuário.
 
-19. **`getManagedRestaurant`**: Rota para obter o restaurante que o usuário (gerente) está gerenciando. Geralmente, esse usuário teria acesso a dados específicos de um restaurante que ele controla.
+- Rotas de Segurança e Auditoria:
 
-### **Rota de Relatórios e Estatísticas:**
+getLoginHistory: Retorna o histórico de logins de um usuário, incluindo IP, data e dispositivo.
 
-20. **`getMonthReceipt`**: Rota para obter um resumo financeiro do mês, como o valor total de vendas ou receita gerada durante o mês.
+lockUser: Bloqueia temporariamente um usuário, impedindo login até desbloqueio.
 
-21. **`getMonthOrdersAmount`**: Rota para obter a quantidade total de pedidos feitos no mês.
+unlockUser: Desbloqueia o acesso de um usuário previamente bloqueado.
 
-22. **`getDayOrdersAmount`**: Rota para obter a quantidade de pedidos feitos em um dia específico.
+getAuditLogs: Retorna registros de auditoria das ações realizadas pelos usuários no sistema.
 
-23. **`getMonthCanceledOrdersAmount`**: Rota para obter a quantidade de pedidos cancelados durante o mês.
+- Rotas de Relatórios e Estatísticas:
 
-24. **`getDailyReceiptInPeriod`**: Rota para obter um resumo diário das receitas dentro de um determinado período. Pode ser útil para verificar o desempenho diário de vendas.
+getUserStats: Retorna estatísticas de usuários, como quantidade de novos registros no mês ou usuários ativos.
 
-### **Rota de Popularidade e Produtos:**
+getActiveSessions: Lista todas as sessões ativas de um usuário no sistema.
 
-25. **`getPopularProducts`**: Rota para obter os produtos mais populares do cardápio com base em vendas ou avaliações. Pode ser útil para identificar quais itens estão sendo mais consumidos.
-
-### **Resumo das Funções:**
-Essas rotas são uma combinação de **gerenciamento de restaurantes**, **gestão de pedidos**, **autenticação de usuários** e **geração de relatórios financeiros**. Elas possibilitam funcionalidades como registrar restaurantes e clientes, fazer pedidos, aprovar ou cancelar pedidos, enviar links de autenticação, criar e visualizar avaliações, gerenciar o cardápio, e consultar relatórios financeiros sobre vendas e pedidos.
-
-Essas rotas formam a espinha dorsal de uma aplicação para restaurantes ou para um sistema de delivery de comida. Com isso, a plataforma pode gerenciar todos os aspectos do processo de pedidos, desde o registro de usuários até a entrega do produto e a análise do desempenho financeiro e popularidade dos itens.
+getInactiveUsers: Retorna usuários inativos em um determinado período.

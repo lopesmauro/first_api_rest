@@ -109,7 +109,22 @@ const updateUser  = async (req: RequestUserData, res: Response):Promise<any>  =>
   }
 }
 
+const getUserById = async (req: Request, res: Response):Promise<any> => {
+  try {
+    if(!req.params.id){
+      return res.status(400).json({ errors: ['ID não enviado.']})
+    }
+    const {id} = req.params
+    const user = await User.findByPk(id)
+    return res.status(200).json(user)
+  } catch (e: any) {
+    return res.status(400).json({ message: "nao foi possivel realizar esta operação."})
+  }
+}
+
+
 export {
+  getUserById,
   storeUser,
   deleteUser,
   showUser,

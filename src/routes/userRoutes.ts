@@ -1,8 +1,9 @@
 import { Router } from "express"
 import { loginRequired } from "../middlewares/loginRequired"
-import { showUser, storeUser, deleteUser, updateUser } from "../controllers/UserController"
+import { showUser, storeUser, deleteUser, updateUser, getUserById } from "../controllers/UserController"
 
 const route = Router()
+
 
 /**
  * @openapi
@@ -18,6 +19,23 @@ const route = Router()
  *         description: Lista de usuários
  */
 route.get("/", loginRequired, showUser)
+
+/**
+ * @openapi
+ * /user/:id:
+ *   get:
+ *     summary: Retorna um usuário pelo id
+ *     tags:
+ *       - Users
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lista de usuários
+ */
+route.get("/:id", loginRequired, getUserById)
+
+
 
 /**
  * @openapi
@@ -45,6 +63,7 @@ route.get("/", loginRequired, showUser)
  */
 route.post("/", storeUser)
 
+
 /**
  * @openapi
  * /user:
@@ -60,9 +79,10 @@ route.post("/", storeUser)
  */
 route.delete("/", loginRequired, deleteUser)
 
+
 /**
  * @openapi
- * /user:
+ * /user/:id:
  *   put:
  *     summary: Atualiza um usuário
  *     tags:
@@ -84,6 +104,6 @@ route.delete("/", loginRequired, deleteUser)
  *       200:
  *         description: Usuário atualizado
  */
-route.put("/", loginRequired, updateUser)
+route.put("/:id", loginRequired, updateUser)
 
 export default route
