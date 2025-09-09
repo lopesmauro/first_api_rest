@@ -108,7 +108,14 @@ docker compose up -d
 ```bash
 sudo docker exec -it container_bd_api mysql -u root -p
 ```
-### Passo 6: Rodar o conteiner do Redis
+
+### Passo 6: Sincronizar o banco de dados com o sequelize
+
+```bash
+npx sequelize-cli db:migrate
+```
+
+### Passo 7: Rodar o conteiner do Redis
 
 ```bash
 docker run --name cache-api-rest -p 6379:6379 -d redis
