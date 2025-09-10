@@ -4,7 +4,7 @@ import swaggerJSDoc from "swagger-jsdoc";
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
-    title: "API REST Example",
+    title: "API REST",
     version: "1.0.0",
     description: "Documentação da API com Swagger",
   },

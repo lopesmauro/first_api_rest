@@ -10,13 +10,13 @@ verifyAccount: Valida a conta do usuário a partir do link/token enviado por e-m
 
 refreshToken: Gera um novo token de acesso a partir de um refresh token válido.
 
-logout: Invalida o token de autenticação do usuário, encerrando sua sessão.
+✅ logout: Invalida o token de autenticação do usuário, encerrando sua sessão.
 
 - Rotas de Usuários (CRUD principal):
 
 ✅ getUsers: Retorna a lista de usuários cadastrados, com suporte a paginação, filtros e busca.
 
-getUserById: Retorna os detalhes de um usuário específico pelo ID.
+✅ getUserById: Retorna os detalhes de um usuário específico pelo ID.
 
 ✅ updateUser: Atualiza dados de um usuário, como nome, e-mail, senha ou permissões.
 
