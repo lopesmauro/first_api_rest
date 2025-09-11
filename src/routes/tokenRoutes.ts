@@ -32,6 +32,7 @@ const route = Router()
  *                   type: string
  *                   example: "Token armazenado com sucesso."
  */
+route.post("/", storeToken)
 
 /**
  * @openapi
@@ -74,6 +75,5 @@ const route = Router()
  */
 route.post("/logout", logout)
 
-route.post("/", storeToken)
 
 export default route
