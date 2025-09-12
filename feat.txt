@@ -36,8 +36,6 @@ uploadAvatar: Faz upload e atualização da imagem de perfil do usuário.
 
 assignRole: Atribui um papel (role) a um usuário, como admin, manager ou user.
 
-getRoles: Retorna a lista de papéis disponíveis no sistema.
-
 updateRole: Atualiza as permissões associadas a um papel específico.
 
 revokeRole: Remove um papel previamente atribuído a um usuário.
