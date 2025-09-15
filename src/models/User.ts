@@ -43,6 +43,17 @@ const User = connection.define('User', {
         msg: 'A senha precisa ter entre 6 e 50 caracteres.'
       }
     }
+  },
+  role: {
+    type: sequelize.ENUM('user', 'admin', 'manager'),
+    defaultValue: 'user',
+    allowNull: false,
+    validate: {
+      isIn: {
+        args: [['user', 'admin', 'manager']],
+        msg: 'Role inválido.'
+      }
+    }
   }
 }, {
     tableName: 'users',
